@@ -57,7 +57,7 @@ class Html
      * @param string $input Input String
      * @return string Replace result
      **/
-    private function LinkReplacementOne($input)
+    static private function LinkReplacementOne($input)
     {
         return preg_replace(
             "/([a-zA-Z]+:\/\/[a-z0-9\_\.\-]+" . "[a-z]{2,6}[a-zA-Z0-9\/\*\-\_\?\&\%\=\,\+\.]+)/",
@@ -71,7 +71,7 @@ class Html
      * @param string $input Input String
      * @return string Replace result
      **/
-    private function LinkReplacementTwo($input)
+    static private function LinkReplacementTwo($input)
     {
         return preg_replace(
             "/[^a-z]+[^:\/\/](www\." . "[^\.]+[\w][\.|\/][a-zA-Z0-9\/\*\-\_\?\&\%\=\,\+\.]+)/",
@@ -85,7 +85,7 @@ class Html
      * @param string $input Input String
      * @return string Replace result
      **/
-    private function ConvertEmail($input)
+    static private function ConvertEmail($input)
     {
         return preg_replace(
             "/([\s|\,\>])([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-z" . "A-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})" . "([A-Za-z0-9\!\?\@\#\$\%\^\&\*\(\)\_\-\=\+]*)" . "([\s|\.|\,\<])/i",
