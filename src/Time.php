@@ -35,7 +35,7 @@ class Time
      * @param int $timestamp An integer representation of a Unix-style timestamp
      * @return boolean
      **/
-    function isValidTimeStamp($timestamp)
+    static private function isValidTimeStamp($timestamp)
     {
         return ((int) $timestamp === $timestamp)
             && ($timestamp <= PHP_INT_MAX)
@@ -47,7 +47,7 @@ class Time
      * @param string $input Input String
      * @return string Replacement result.
      **/
-    public static function Ago($input, $type = 'timestamp')
+    static public function Ago($input, $type = 'timestamp')
     {
 
         // Initialization

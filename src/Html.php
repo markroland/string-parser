@@ -34,7 +34,7 @@ class Html
      * @param string $input Input String
      * @return string Replacement result.
      **/
-    public static function Linkify($input)
+    static public function Linkify($input)
     {
 
         // Set the default output to be the same as the input
