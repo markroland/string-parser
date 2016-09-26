@@ -7,10 +7,10 @@
  *
  * @category  Html
  * @package   Html
- * @author    Mark Roland <mark@not-a-real-domain.com>
+ * @author    Mark Roland
  * @copyright 2015 Mark Roland
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/markroland/composer-boilerplate
+ * @link      https://github.com/markroland/string-parser
  **/
 
 namespace MarkRoland\StringParser;
@@ -20,76 +20,68 @@ namespace MarkRoland\StringParser;
  *
  * @category  Html
  * @package   Html
- * @author    Mark Roland <mark@not-a-real-domain.com>
+ * @author    Mark Roland
  * @copyright 2015 Mark Roland
  * @license   https://opensource.org/licenses/MIT MIT
  * @version   Release: @package_version@
- * @link      https://github.com/markroland/composer-boilerplate
+ * @link      https://github.com/markroland/string-parser
  **/
 class Html
 {
 
     /**
      * Linkify String
+     *
      * @param string $input Input String
+     *
      * @return string Replacement result.
      **/
-    static public function Linkify($input)
+    public static function Linkify($input)
     {
 
         // Set the default output to be the same as the input
         $output = $input;
 
-        // Replace ?
-        $output = self::LinkReplacementOne($output);
-
-        // Replace ?
-        $output = self::LinkReplacementTwo($output);
+        // Replace text URL with hyperlinked URL
+        $output = self::Add_Url_Hyperlinks($output);
 
         // Replace email address
-        $output = self::ConvertEmail($output);
+        $output = self::Add_Email_Hyperlinks($output);
 
         return $output;
     }
 
     /**
-     * Convert Email
+     * Replace URL(s) in text with hyperlinked URL(s)
+     *
      * @param string $input Input String
-     * @return string Replace result
+     *
+     * @return string Hyperlinked text
      **/
-    static private function LinkReplacementOne($input)
+    private static function Add_Url_Hyperlinks($input)
     {
-        return preg_replace(
-            "/([a-zA-Z]+:\/\/[a-z0-9\_\.\-]+" . "[a-z]{2,6}[a-zA-Z0-9\/\*\-\_\?\&\%\=\,\+\.]+)/",
-            '<a href="$1" target="_blank">$1</a>',
-            $input
-        );
-    }
 
-    /**
-     * Convert Email
-     * @param string $input Input String
-     * @return string Replace result
-     **/
-    static private function LinkReplacementTwo($input)
-    {
-        return preg_replace(
-            "/[^a-z]+[^:\/\/](www\." . "[^\.]+[\w][\.|\/][a-zA-Z0-9\/\*\-\_\?\&\%\=\,\+\.]+)/",
+        $replaced_text = preg_replace(
+            "/([a-zA-Z]+:\/\/[a-z0-9\_\.\-]+[a-z]{2,6}[a-zA-Z0-9\/\*\-\_\?\&\%\=\,\+\.]+)/",
             '<a href="$1">$1</a>',
             $input
         );
+
+        return $replaced_text;
     }
 
     /**
-     * Convert Email
+     * Replaced Email address(es) in text with hyperlinked Email Address(es)
+     *
      * @param string $input Input String
-     * @return string Replace result
+     *
+     * @return string Hyperlinked text
      **/
-    static private function ConvertEmail($input)
+    private static function Add_Email_Hyperlinks($input)
     {
         return preg_replace(
-            "/([\s|\,\>])([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-z" . "A-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})" . "([A-Za-z0-9\!\?\@\#\$\%\^\&\*\(\)\_\-\=\+]*)" . "([\s|\.|\,\<])/i",
-            "$1<a href=\"mailto:$2$3$4\">$2</a>$4",
+            "/([\s|\,\>])([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})([A-Za-z0-9\!\?\@\#\$\%\^\&\*\(\)\_\-\=\+]*)([\s|\.|\,\<])/i",
+            "$1<a href=\"mailto:$2\">$2</a>$4",
             $input
         );
     }

@@ -7,10 +7,10 @@
  *
  * @category  TimeAgo
  * @package   TimeAgo
- * @author    Mark Roland <mark@not-a-real-domain.com>
+ * @author    Mark Roland
  * @copyright 2015 Mark Roland
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/markroland/parser
+ * @link      https://github.com/markroland/string-parser
  **/
 
 namespace MarkRoland\StringParser;
@@ -20,11 +20,11 @@ namespace MarkRoland\StringParser;
  *
  * @category  TimeAgo
  * @package   TimeAgo
- * @author    Mark Roland <mark@not-a-real-domain.com>
+ * @author    Mark Roland
  * @copyright 2015 Mark Roland
  * @license   https://opensource.org/licenses/MIT MIT
  * @version   Release: @package_version@
- * @link      https://github.com/markroland/parser
+ * @link      https://github.com/markroland/string-parser
  **/
 class Time
 {
@@ -32,7 +32,9 @@ class Time
     /**
      * Validate input is a timestamp
      * Source: http://stackoverflow.com/a/2524761
+     *
      * @param int $timestamp An integer representation of a Unix-style timestamp
+     *
      * @return boolean
      **/
     static private function isValidTimeStamp($timestamp)
@@ -44,7 +46,9 @@ class Time
 
     /**
      * Convert date to relative time
+     *
      * @param string $input Input String
+     *
      * @return string Replacement result.
      **/
     static public function Ago($input, $type = 'timestamp')

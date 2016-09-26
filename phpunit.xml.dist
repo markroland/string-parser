@@ -2,7 +2,8 @@
 <phpunit bootstrap="tests/bootstrap.php">
     <testsuites>
         <testsuite name="app">
-            <file>tests/HelloTest.php</file>
+            <file>tests/HtmlTest.php</file>
+            <file>tests/TimeTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
@@ -11,6 +12,6 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="report" charset="UTF-8" />
+        <log type="coverage-html" target="build/phpunit-report" charset="UTF-8" />
     </logging>
 </phpunit>
