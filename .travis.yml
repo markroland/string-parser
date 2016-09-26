@@ -14,4 +14,4 @@ before_install:
   - phpenv rehash
 
 script:
-  - phing
+  - phing phplint phpunit
