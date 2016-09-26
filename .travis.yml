@@ -9,9 +9,9 @@ php:
   - hhvm
 
 before_install:
-  - pear channel-discover pear.phing.info
-  - pear install phing/phing
+  - wget http://www.phing.info/get/phing-latest.phar
+  - chmod +x phing.phar
   - phpenv rehash
 
 script:
-  - phing phplint phpunit
+  - phing.phar phplint phpunit
