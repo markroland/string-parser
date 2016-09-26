@@ -6,12 +6,11 @@ php:
   - 5.5
   - 5.4
   - 5.3
-  - hhvm
 
 before_install:
-  - wget http://www.phing.info/get/phing-latest.phar
-  - chmod +x phing.phar
+  - pear channel-discover pear.phing.info
+  - pear install phing/phing
   - phpenv rehash
 
 script:
-  - phing.phar phplint phpunit
+  - phing phplint phpunit
